@@ -173,17 +173,35 @@ span{
 .btn{
     display: inline-block;
     padding: 1rem 2.8rem;
-    background: var(--main-color);
+    background-color: rgb(3, 40, 84);
     border-radius: 4rem;
     box-shadow: 0 0 1rem var(--main-color);
     font-size: 1.6rem;
-    color: var(--bg-color);
+    color: white;
     letter-spacing: .1rem;
     font-weight: 600;
-    transition: .5s ease;  
+    transition: .5s ease-in-out;  
+    cursor: pointer;
+    position: relative;
+}
+.btn::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform: scale(1.05);
+    border-radius: 3rem;
+    background: linear-gradient(to top right,#00fff7,#ff00f7);
+    z-index: -1;
+
 }
 .btn:hover{
-    box-shadow: none;
+    box-shadow: 15px 0 40px #e100ff,-15px 0 40px #008cff;
+
+    z-index: 0;
+    
 }
 .about{
     display: flex;
@@ -289,12 +307,12 @@ margin: .7rem 0;
 .contact form .input-box input{
     width:49% ;
 }
-/* .contact form textarea{
+.contact form textarea{
     resize: none;
-} */
+}
 .contact form .btn{
     margin-top: 2rem;
-/*     cursor: pointer; */
+    cursor: pointer;
 }
 
 .footer{

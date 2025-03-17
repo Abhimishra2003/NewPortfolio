@@ -40,7 +40,7 @@ window.onscroll = () =>{
     })
 
     ScrollReveal().reveal('.home-content, heading',{ origin: 'top'});
-    ScrollReveal().reveal('.home-img ,.project-container ,.contact form',{origin:'button'});
+    // ScrollReveal().reveal('.home-img ,.project-container ,.contact form',{origin:'button'});
     ScrollReveal().reveal ('.home-contact h1,.about-img',{origin: 'left'});
     ScrollReveal().reveal('.home-contact p, .about-content',{ origin : 'right'})
 }
@@ -48,6 +48,13 @@ window.onscroll = () =>{
 
 const typed = new Typed ('.multiple-text',{
     strings: ['Frontend Developer','Backend Developer'],
+    typeSpeed: 70,
+    backSpeed:70,
+    backDelay:1000,
+    loop: true,
+}); 
+const type = new Typed ('.skill',{
+    strings: ['HTML','CSS','JAVASCRIPT','BOOTSTRAP','JQUERY','JAVA','SQL'],
     typeSpeed: 70,
     backSpeed:70,
     backDelay:1000,
