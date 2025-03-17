@@ -245,40 +245,40 @@
             <h1>Calculator</h1>
             <input type="text" id="display" disabled placeholder="0" class="ab1" textaline>
             <table>
-                <tr>
-                    <td><button id="clearback" class="ab">C</button></td>
-                    <td><button id="clear" class="ab">AC</button></td>
-                    <td><button class="ab">%</button></td>
-                    <td><button class="ab">/</button></td>
-                </tr>
-                <tr>
-                    <td><button class="ab">7</button></td>
-                    <td><button class="ab">8</button></td>
-                    <td><button class="ab">9</button></td>
-                    <td><button class="ab">*</button></td>
-                </tr>
-                <tr>
-                    <td><button class="ab">4</button></td>
-                    <td><button class="ab">5</button></td>
-                    <td><button class="ab">6</button></td>
-                    <td><button class="ab">-</button></td>
-                </tr>
-                <tr>
-                    <td><button class="ab">1</button></td>
-                    <td><button class="ab">2</button></td>
-                    <td><button class="ab">3</button></td>
-                    <td><button class="ab">+</button></td>
-                </tr>
-                <tr>
-                    <td><button class="ab">00</button></td>
-                    <td><button class="ab">0</button></td>
-                    <td><button class="ab">.</button></td>
-                    <td><button id="solve" class="ab">=</button></td>
-                </tr>
+              <tr>
+                <td><button id="clearback">C</button></td>
+                <td><button id="clear">AC</button></td>
+                <td><button class="ab">%</button></td>
+                <td><button class="ab">/</button></td>
+              </tr>
+              <tr>
+                <td><button class="ab">7</button></td>
+                <td><button class="ab">8</button></td>
+                <td><button class="ab">9</button></td>
+                <td><button class="ab">*</button></td>
+              </tr>
+              <tr>
+                <td><button class="ab">4</button></td>
+                <td><button class="ab">5</button></td>
+                <td><button class="ab">6</button></td>
+                <td><button class="ab">-</button></td>
+              </tr>
+              <tr>
+                <td><button class="ab">1</button></td>
+                <td><button class="ab">2</button></td>
+                <td><button class="ab">3</button></td>
+                <td><button class="ab">+</button></td>
+              </tr>
+              <tr>
+                <td><button class="ab">00</button></td>
+                <td><button class="ab">0</button></td>
+                <td><button class="ab">.</button></td>
+                <td><button id="solve">=</button></td>
+              </tr>
             </table>
-
-
-        </section>
+      
+      
+          </section>
     </main>
     <script>
         const menuIcon = document.getElementById('menu-icon');
@@ -287,89 +287,91 @@
         menuIcon.addEventListener('click', () => {
             navbar.classList.toggle('active');
         });
-        let inputs = document.querySelectorAll("button.ab");
-        let eq = document.getElementById("display");
-        console.log(inputs);
 
-        inputs.forEach((myinput) => {
-            myinput.addEventListener("click", function () {
-                eq.value += myinput.innerText;
-            })
+         let inputs = document.querySelectorAll("button.ab");
+    let eq = document.getElementById("display");
+    console.log(inputs);
 
+    inputs.forEach((myinput)=>{
+        myinput.addEventListener("click",function(){
+       eq.value += myinput.innerText;
         })
 
+    })
 
 
-        solve.addEventListener("click", function () {
-            let result = eq.value;
-            // Handle expressions with operators
-            if (result.includes('%')) {
-                try {
-                    while (/%/.test(result)) {
-                        result = result.replace(/(\d+)%(\d+)/, (match, num1, num2) => {
-                            return (parseFloat(num1) * parseFloat(num2)) / 100; I
-                        });
-                    }
+    
+    solve.addEventListener("click", function () {
+      let result = eq.value;
+      // Handle expressions with operators
+      if (result.includes('%')) {
+        try {
+          while (/%/.test(result)) {
+            result = result.replace(/(\d+)%(\d+)/, (match, num1, num2) => {
+               return (parseFloat(num1) * parseFloat(num2)) / 100; I
+          });
+}
 
-                    eq.value = eval(result);
+    eq.value = eval(result);
 
-                } catch (error) {
-                    eq.value = "Error";
-                }
+}catch (error) {
+      eq.value = "Error";
+    }
 
-            } else {
-                try {
-                    eq.value = eval(result);
-                } catch (errог) {
-                    eq.value = "Еггог";
+} else {
+      try {
+        eq.value = eval(result);
+      } catch (errог) {
+        eq.value = "Еггог";
 
-                }
+      }
 
-            }
-        });
-
-
+    }
+  });
 
 
-        let ac = document.getElementById("clear")
-        ac.addEventListener("click", function () {
-            eq.value = "";
-        })
 
-        let clearback = document.getElementById("clearback")
-        clearback.addEventListener("click", function () {
-            eq.value = eq.value.slice(0, -1);
-        })
-        document.addEventListener("keydown", function (event) {
-            let eq = document.getElementById("display");
-            let key = event.key;
 
-            if (key === "0" || key === "1" || key === "2" || key === "3" || key === "4" || key === "5" || key === "6" || key === "7" || key === "8" || key === "9") {
-                eq.value += key;
-            } else if (key === "+") {
-                eq.value += "+";
-            } else if (key === "-") {
-                eq.value += "-";
-            } else if (key === "*") {
-                eq.value += "*";
-            } else if (key === ".") {
-                eq.value += ".";
-            }
-            else if (key === "/") {
-                eq.value += "/";
-            } else if (key === "%") {
-                let num1 = parseFloat(eq.value);
-                let result = (num1 / 100) * 100 + "%";
-                eq.value = result;
-            } else if (key === "=") {
-                eq.value = eval(eq.value);
-            } else if (key === "Backspace") {
-                eq.value = eq.value.slice(0, -1);
-            } else if (key === "Escape") {
-                eq.value = "";
-            }
-        });
-    </script>
+    let ac = document.getElementById("clear")
+    ac.addEventListener("click", function () {
+      eq.value = "";
+    })
+
+    let clearback = document.getElementById("clearback")
+    clearback.addEventListener("click", function () {
+      eq.value = eq.value.slice(0, -1);
+    })
+    document.addEventListener("keydown", function (event) {
+      let eq = document.getElementById("display");
+      let key = event.key;
+
+      if (key === "0" || key === "1" || key === "2" || key === "3" || key === "4" || key === "5" || key === "6" || key === "7" || key === "8" || key === "9") {
+        eq.value += key;
+      } else if (key === "+") {
+        eq.value += "+";
+      } else if (key === "-") {
+        eq.value += "-";
+      } else if (key === "*") {
+        eq.value += "*";
+      } else if (key === ".") {
+        eq.value += ".";
+      }
+      else if (key === "/") {
+        eq.value += "/";
+      } else if (key === "%") {
+        let num1 = parseFloat(eq.value);
+        let result = (num1 / 100) * 100 + "%";
+        eq.value = result;
+      } else if (key === "=") {
+        eq.value = eval(eq.value);
+      } else if (key === "Backspace") {
+        eq.value = eq.value.slice(0, -1);
+      } else if (key === "Escape") {
+        eq.value = "";
+      }
+    });
+
+  </script>
 
 </body>
 
